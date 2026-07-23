@@ -4,9 +4,14 @@ import com.luizconde.agendadortarefas.business.dto.TarefasDTO;
 import com.luizconde.agendadortarefas.infrastructure.entity.TarefasEntity;
 import org.mapstruct.Mapper;
 
+import java.util.List;
+
 @Mapper(componentModel = "spring")
 public interface TarefasMapper {
     TarefasEntity paraTarefaEntity(TarefasDTO dto);
 
     TarefasDTO paraTarefaDTO(TarefasEntity entity);
+
+    List<TarefasEntity> paraListaTarefaEntity(List<TarefasDTO> dtos);
+    List<TarefasDTO> paraListaTarefaDTO(List<TarefasEntity> dto);
 }

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import static com.luizconde.agendadortarefas.infrastructure.enums.StatusNotificacaoEnum.PENDENTE;
 
@@ -32,5 +33,18 @@ public class TarefasService {
         TarefasEntity tarefaSalva = tarefasRepository.save(tarefa);
 
         return mapper.paraTarefaDTO(tarefaSalva);
+    }
+
+    public List<TarefasDTO> buscaTarefasPorPeriodo(LocalDateTime dataInicial,
+                                                   LocalDateTime dataFinal){
+        return mapper.paraListaTarefaDTO(tarefasRepository.findByDataEventoBetween(dataInicial, dataFinal));
+    }
+
+    public List<TarefasDTO> buscaTarefasPorEmail(String token){
+        String email = jwtUtil.extractUsername(token.substring(7));
+
+        return mapper.paraListaTarefaDTO(
+                tarefasRepository.findByEmailUsuario(email)
+        );
     }
 }
