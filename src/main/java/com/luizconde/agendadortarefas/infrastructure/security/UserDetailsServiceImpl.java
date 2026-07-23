@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class UserDetailsServiceImpl{
 
-    private UsuarioClient client;
+    private final UsuarioClient client;
 
     public UserDetails loadUserByUsername(String email, String token){
         UsuarioDTO usuario = client.buscarPorEmail(email, token);
