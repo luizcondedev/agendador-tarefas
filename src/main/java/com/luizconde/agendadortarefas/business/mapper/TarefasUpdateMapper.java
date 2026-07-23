@@ -1,0 +1,12 @@
+package com.luizconde.agendadortarefas.business.mapper;
+
+import com.luizconde.agendadortarefas.business.dto.TarefasDTO;
+import com.luizconde.agendadortarefas.infrastructure.entity.TarefasEntity;
+import org.mapstruct.Mapper;
+import org.mapstruct.MappingTarget;
+import org.mapstruct.NullValuePropertyMappingStrategy;
+
+@Mapper(componentModel = "spring", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+public interface TarefasUpdateMapper {
+    void updateTarefas(TarefasDTO dto, @MappingTarget TarefasEntity entity);
+}
