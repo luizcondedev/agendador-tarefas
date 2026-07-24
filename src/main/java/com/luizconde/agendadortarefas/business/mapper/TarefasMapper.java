@@ -12,6 +12,5 @@ public interface TarefasMapper {
 
     TarefasDTO paraTarefaDTO(TarefasEntity entity);
 
-    List<TarefasEntity> paraListaTarefaEntity(List<TarefasDTO> dtos);
     List<TarefasDTO> paraListaTarefaDTO(List<TarefasEntity> dto);
 }
