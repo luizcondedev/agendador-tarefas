@@ -1,0 +1,23 @@
+services:
+  app:
+    build: .
+    ports:
+      - "8081:8081"
+    environment:
+      SPRING_MONGODB_URI: mongodb://admin:admin123@mongodb:27017/agendador_tarefas?authSource=admin
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin123
+      MONGO_INITDB_DATABASE: agendador_tarefas
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+
+volumes:
+  mongodb_data:
